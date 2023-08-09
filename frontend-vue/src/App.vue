@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar id="NavComponent"/>
-    <router-view></router-view>
+    <router-view class="p-3"></router-view>
   </div>
 </template>
 
@@ -26,13 +26,11 @@ export default {
     justify-content: space-between;
 }
 #NavComponent{
-    min-height: 8vh;
-    max-height: 10vh;
     display: flex;
     position: relative;
     border-right: 1px solid black;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .VariableFlexDirection {
     flex-direction: column;
   }
