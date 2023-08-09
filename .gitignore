@@ -1,2 +1,21 @@
-Frontend Vue/node_modules
+frontend-vue/node_modules
+
+frontend-vue/.DS_Store
+frontend-vue/dist
+
+# Log files
+frontend-vue/npm-debug.log*
+frontend-vue/yarn-debug.log*
+frontend-vue/yarn-error.log*
+frontend-vue/pnpm-debug.log*
+
+# Editor directories and files
+frontend-vue/idea
+frontend-vue/vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 *.env
