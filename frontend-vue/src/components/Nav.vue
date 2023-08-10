@@ -75,12 +75,18 @@ export default{
 #NavCollapser{
     display: none;
     padding: 10px;
-    background-color: black;
+    color: blue;
+    background-color: white;
+    border: 1px solid black;
     position: absolute;
     bottom: 1%;
     left: 105%;
     z-index: 5;
     font-weight: bold;
+}
+#NavCollapser:hover{
+    background-color: blue;
+    color: white;
 }
 @media only screen and (min-width: 992px) {
   #NavCollapser{
