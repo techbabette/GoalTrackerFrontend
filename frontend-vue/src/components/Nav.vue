@@ -10,7 +10,7 @@
         <div class="navbar-nav w-100 h-100 flex-column d-flex">
             <ul class="nav nav-pills flex-column mb-auto">
             <li v-for="Link, index in AvailableLinks" :key="index" class="nav-item">
-                <router-link :to="Link.path" class="nav-link" :class="{active : ActiveLinkPath === Link.path}">{{ Link.text }}</router-link>
+                <router-link :to="Link.path" class="nav-link" :class="{active : ActiveLinkName === Link.RouteName}">{{ Link.text }}</router-link>
             </li>
             <hr>
             </ul>
@@ -39,17 +39,15 @@ export default{
     name: "NavigationComponent",
     data(){
         return {
-            //Belongs in a store module, is here for development purposes
-            ActiveLinkPath : "/goals",
-            AvailableLinks : [
-                {
-                    text: "Home", path: "/",
-                },
-                {
-                    text: "Goals", path: "/goals"
-                }
-            ],
             IsNavbarCollapsed : false
+        }
+    },
+    computed:{
+        ActiveLinkName : function(){
+            return this.$store.state.navigationLinks.ActiveLinkName;
+        },
+        AvailableLinks : function(){
+            return this.$store.getters.getNavbarLinksForActiveUser;
         }
     },
     methods:{

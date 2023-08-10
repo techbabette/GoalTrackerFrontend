@@ -21,6 +21,9 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.active{
+  color: white !important;
+}
 .VariableFlexDirection{
     flex-direction: row;
     justify-content: space-between;

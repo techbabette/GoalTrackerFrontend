@@ -10,7 +10,7 @@ let routes = [
         path: "/", component: LandingPage, name: "Home page"
     },
     {
-        path: "/goals", component: GoalsPage, name: "Goal page"
+        path: "/goals", component: GoalsPage, name: "My goals"
     }
 ]
 
