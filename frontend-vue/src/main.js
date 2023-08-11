@@ -5,8 +5,10 @@ import store from "./store/store";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import TextInput from "./components/inputs/Text"
+import AccessLevelDirective from './directives/AccessLevelDirective';
 
 Vue.component("TextInput", TextInput);
+Vue.directive("accesslevel", AccessLevelDirective);
 
 router.beforeEach(function (to, from, next) {
     document.title = to.name;
