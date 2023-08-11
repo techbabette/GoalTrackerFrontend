@@ -1,23 +1,10 @@
 <template>
     <form class="col-12 col-lg-4 container">
         <h2>Start your goal tracking journey!</h2>
-        <div class="mb-3">
-            <label for="Username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="Username" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
-        </div>
-        <div class="mb-3">
-            <label for="repeatPassword" class="form-label">Repeat password</label>
-            <input type="password" class="form-control" id="repeatPassword">
-        </div>
+        <TextInput class="mb-3" type="text" label="Username"/>
+        <TextInput class="mb-3" type="email" hint="We'll never share your email with anyone else." label="Email address"/>
+        <TextInput class="mb-3" type="password" label="Password"/>
+        <TextInput class="mb-3" type="password" label="Repeat password"/>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
