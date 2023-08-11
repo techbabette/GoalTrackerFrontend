@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <Navbar id="NavComponent"/>
+    <MessageDisplay/>
     <router-view class="p-3"></router-view>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Nav.vue'
+import MessageDisplay from './components/MessageDisplay.vue'
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar,
+    MessageDisplay
   }
 }
 </script>

@@ -35,8 +35,16 @@ export default{
         async createNewUser(){
             let result = await this.$store.dispatch("registerNewUser", this.registrationObject);
 
+            if(result.errors)
             this.errorObject = result.errors;
+
+            this.$store.commit("addMessageToList", {text:result.message, success:result.success});
         }
+    },
+    mounted(){
+        this.$store.commit("addMessageToList", {text: "Hello Everyone", success: true});
+
+        console.log(this.$store.state.messages.messages);
     }
 }
 </script>

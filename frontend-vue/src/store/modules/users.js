@@ -22,7 +22,10 @@ export default {
                 return result;
             }
             catch(e){
-                return e.response.data;
+                if(e.response){
+                    return e.response.data
+                }
+                return {message: "Server error", success: false};
             }
         }
     },
