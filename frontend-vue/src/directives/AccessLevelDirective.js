@@ -4,10 +4,6 @@ export default {
 
         let accessLevelRequired = binding.value;
 
-        console.log(accessLevel);
-
-        console.log(accessLevelRequired);
-
         if(accessLevelRequired > accessLevel) {
             vnode.elm.classList.add("d-none");
         }

@@ -1,3 +1,5 @@
+import axios from "@/axios/axios";
+
 export default {
     state: {
       activeUserId: 0,
@@ -12,6 +14,17 @@ export default {
             accessLevel : 0
         }
       },
+    },
+    actions:{
+        async registerNewUser(state, newUserObject){
+            try{
+                let result = await axios.post("/users/register", newUserObject);
+                return result;
+            }
+            catch(e){
+                return e.response.data;
+            }
+        }
     },
     getters: {
         activeUser(state){
