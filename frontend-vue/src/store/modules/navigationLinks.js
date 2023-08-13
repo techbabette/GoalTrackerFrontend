@@ -24,6 +24,13 @@ export default {
                 "Access level required" : -1
             },
             {
+                "text" : "Login",
+                "path" : "/login",
+                "RouteName" : "Activate account",
+                "Position" : "Hidden",
+                "Access level required" : -1
+            },
+            {
                 "text" : "Register",
                 "path" : "/register",
                 "RouteName" : "Register",

@@ -2,24 +2,52 @@ import axios from "@/axios/axios";
 
 export default {
     state: {
-      activeUserId: 0,
-      userRoles : {
-        "admin" : {
-            accessLevel : 2
+        token: "",
+        activeUser :  {
+            "username" : "Logged out",
+            "role" : "logged out (blocked)",
         },
-        "user" : {
-            accessLevel : 1
+        userRoles : {
+            "admin" : {
+                accessLevel : 2
+            },
+            "user" : {
+                accessLevel : 1
+            },
+            "logged out (blocked)" : {
+                accessLevel : 0
+            }
         },
-        "logged out (blocked)" : {
-            accessLevel : 0
-        }
-      },
     },
     actions:{
         async registerNewUser(state, newUserObject){
             try{
                 let result = await axios.post("/users/register", newUserObject);
-                return result;
+                return result.data;
+            }
+            catch(e){
+                if(e.response){
+                    return e.response.data
+                }
+                return {message: "Server error", success: false};
+            }
+        },
+        async activateUser(state, activationLink){
+            try{
+                let result = await axios.get(`users/activate/${activationLink}`);
+                return result.data;
+            }
+            catch(e){
+                if(e.response){
+                    return e.response.data;
+                }
+                return {message: "Server error", success: false};
+            }
+        },
+        async attemptLogin(state, loginInformation){
+            try{
+                let result = await axios.post("/users/login", loginInformation);
+                return result.data;
             }
             catch(e){
                 if(e.response){
@@ -29,15 +57,23 @@ export default {
             }
         }
     },
+    mutations:{
+        setUserToken(state, token){
+            state.token = token;
+        },
+        setActiveUsername(state, newUsername){
+            state.activeUser.username = newUsername;
+        },
+        setActiveUserRole(state, newRole){
+            state.activeUser.role = newRole;
+        }
+    },
     getters: {
         activeUser(state){
-            if(!state.activeUserId) 
-            return {
-                "id" : 0,
-                "username" : "Logged out",
-                "role" : "logged out (blocked)",
-            }
-            return state.userAccounts.find(user => user.id === state.activeUserId);
+            return state.activeUser
+        },
+        activeUsername(state, getters){
+            return getters.activeUser.username;
         },
         role(state, getters) {
             return getters.activeUser.role

@@ -19,11 +19,15 @@ let routes = [
     },
     {
         path: "/login", component: LoginPage, name: "Login"
+    },
+    {
+        path: "/login/:activationLink", component: LoginPage, name: "Activate account"
     }
 ]
 
 const router = new Router({
-    routes
+    routes,
+    mode: "history"
 })
 
 export default router
