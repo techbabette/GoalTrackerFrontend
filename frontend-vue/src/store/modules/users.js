@@ -2,8 +2,8 @@ import axios from "@/axios/axios";
 
 export default {
     state: {
-        token: "",
         activeUser :  {
+            "token" : "",
             "username" : "Logged out",
             "role" : "logged out (blocked)",
         },
@@ -74,6 +74,9 @@ export default {
         },
         activeUsername(state, getters){
             return getters.activeUser.username;
+        },
+        token(state, getters){
+            return getters.activateUser.token;
         },
         role(state, getters) {
             return getters.activeUser.role
