@@ -15,7 +15,7 @@
             <hr>
             </ul>
             <div v-accesslevel=1 class="dropup">
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <a data-test="UserMenuButton" href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                 <strong data-test="UsernameDisplay">{{ Username }}</strong>
             </a>
@@ -24,7 +24,7 @@
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a @click="Logout" class="dropdown-item" href="#">Sign out</a></li>
+                <li><a data-test="LogoutButton" @click="Logout" class="dropdown-item" href="#">Sign out</a></li>
             </ul>
             </div>
         </div>
@@ -59,6 +59,8 @@ export default{
         },
         async Logout(){
             await this.$store.dispatch("logout");
+
+            console.log(this.$store.getters.token);
 
             this.$store.commit("addMessageToList", {text:"Successfully logged out", success:true});
 

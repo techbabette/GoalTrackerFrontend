@@ -4,8 +4,9 @@ export default {
     state: {
         activeUser :  {
             "token" : "",
-            "username" : "Logged out",
+            "username" : "",
             "role" : "logged out (blocked)",
+            "userId" : 0
         },
         userRoles : {
             "admin" : {
@@ -44,6 +45,22 @@ export default {
                 return {message: "Server error", success: false};
             }
         },
+        async getUserInformation(state, token){
+            try{
+                let result = await axios.get(`users/returning`,{
+                    headers : {
+                        "bearer" : token
+                    }
+                });
+                return result.data;
+            }
+            catch(e){
+                if(e.response){
+                    return e.response.data;
+                }
+                return {message: "Server error", success: false};
+            }
+        },
         async attemptLogin(state, loginInformation){
             try{
                 let result = await axios.post("/users/login", loginInformation);
@@ -57,34 +74,36 @@ export default {
             }
         },
         async logout({commit}){
-            commit("setUserToken", "");
-            commit("setActiveUsername", "Logged out");
-            commit("setActiveUserRole", "logged out (blocked)");
+            commit("emptySession");
         }
     },
     mutations:{
         setUserToken(state, token){
-            state.token = token;
+            localStorage.setItem("JWT", token);
+            state.activeUser.token = token;
         },
         setActiveUsername(state, newUsername){
             state.activeUser.username = newUsername;
         },
         setActiveUserRole(state, newRole){
             state.activeUser.role = newRole;
+        },
+        emptySession(state){
+            localStorage.removeItem("JWT");
+            state.activeUser.token = "";
+            state.activeUser.username =  "";
+            state.activeUser.role = "logged out (blocked)";
         }
     },
     getters: {
-        activeUser(state){
-            return state.activeUser
+        activeUsername(state){
+            return state.activeUser.username;
         },
-        activeUsername(state, getters){
-            return getters.activeUser.username;
+        token(state){
+            return state.activeUser.token;
         },
-        token(state, getters){
-            return getters.activateUser.token;
-        },
-        role(state, getters) {
-            return getters.activeUser.role
+        role(state) {
+            return state.activeUser.role
         },
         activeUserAccessLevel(state, getters){
             return state.userRoles[getters.role].accessLevel;

@@ -16,6 +16,18 @@ describe('Login behavior', () => {
       }
     });
 
-    cy.get([`data-test="UsernameDisplay"`]).should("be.visible");
+    cy.get('[data-test="UsernameDisplay"]').should('be.visible');
+  })
+  it("Can log the user out and route to login", ()=>{
+    cy.visit(`${Cypress.env("host")}/`, {
+      onBeforeLoad: function(window){
+        window.localStorage.setItem("JWT", Cypress.env("validToken"));
+      }
+    })
+
+    cy.get('[data-test="UserMenuButton"]').click();
+    cy.get('[data-test="LogoutButton"]').click();
+
+    cy.url().should("include", "/login");
   })
 })

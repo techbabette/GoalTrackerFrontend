@@ -15,6 +15,23 @@ export default {
   components: {
     Navbar,
     MessageDisplay
+  },
+  async mounted(){
+    console.log(this.$store.getters.token);
+    if(this.$store.getters.token){
+      let result = await this.$store.dispatch("getUserInformation", this.$store.getters.token);
+
+      if(!result.success){
+        this.$store.commit("addMessageToList", {text:"Session expired", success:false});
+        this.$store.commit("emptySession");
+        this.$router.push("/login");
+        return;
+      }
+
+      this.$store.commit("setActiveUsername", result.body.username);
+      this.$store.commit("setActiveUserRole", "user");
+      this.$store.commit("addMessageToList", {text:"Continuing session", success:true});
+    }
   }
 }
 </script>

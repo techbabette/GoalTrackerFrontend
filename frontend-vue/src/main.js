@@ -18,6 +18,10 @@ router.beforeEach(function (to, from, next) {
 
 Vue.config.productionTip = false
 
+if(localStorage.getItem("JWT")){
+  store.commit("setUserToken", localStorage.getItem("JWT"));
+}
+
 new Vue({
   render: h => h(App),
   store,
