@@ -60,6 +60,8 @@ export default{
         async Logout(){
             await this.$store.dispatch("logout");
 
+            this.$store.commit("addMessageToList", {text:"Successfully logged out", success:true});
+
             this.$router.push("/login");
         }
     }
