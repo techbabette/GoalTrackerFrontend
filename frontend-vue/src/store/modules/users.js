@@ -55,6 +55,11 @@ export default {
                 }
                 return {message: "Server error", success: false};
             }
+        },
+        async logout({commit}){
+            commit("setUserToken", "");
+            commit("setActiveUsername", "Logged out");
+            commit("setActiveUserRole", "logged out (blocked)");
         }
     },
     mutations:{

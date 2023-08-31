@@ -24,7 +24,7 @@
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a @click="Logout" class="dropdown-item" href="#">Sign out</a></li>
             </ul>
             </div>
         </div>
@@ -56,6 +56,11 @@ export default{
     methods:{
         SwitchNavbarCollapse(){
             this.IsNavbarCollapsed = !this.IsNavbarCollapsed;
+        },
+        async Logout(){
+            await this.$store.dispatch("logout");
+
+            this.$router.push("/login");
         }
     }
 }

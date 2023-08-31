@@ -36,6 +36,8 @@ export default{
                 this.$store.commit("setActiveUsername", user.username);
                 this.$store.commit("setActiveUserRole", "user");
                 this.$store.commit("setUserToken", token);
+
+                this.$router.push("/goals");
             }
         }
     },
