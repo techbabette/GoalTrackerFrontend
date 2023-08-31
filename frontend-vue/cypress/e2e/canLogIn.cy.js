@@ -8,5 +8,14 @@ describe('Login behavior', () => {
     cy.get("#submitButton").click();
 
     cy.url().should("include", "/goals");
+  }),
+  it("Can authenticate user that logged in earlier", () => {
+    cy.visit(`${Cypress.env("host")}/`, {
+      onBeforeLoad: function(window){
+        window.localStorage.setItem("JWT", Cypress.env("validToken"));
+      }
+    });
+
+    cy.get([`data-test="UsernameDisplay"`]).should("be.visible");
   })
 })
