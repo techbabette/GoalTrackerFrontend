@@ -1,9 +1,9 @@
 <template>
     <form class="col-12 col-lg-4 container">
         <h2>Continue your goal tracking journey!</h2>
-        <TextInput v-model="loginObject.email" :errorMessage="errorObject.emailError" class="mb-3" type="Email" label="Email address"/>
-        <TextInput v-model="loginObject.password" :errorMessage="errorObject.passwordError" class="mb-3" type="password" label="Password"/>
-        <button type="button" @click="attemptLogin()" class="btn btn-primary">Login</button>
+        <TextInput v-model="loginObject.email" idProp="emailField" :errorMessage="errorObject.emailError" class="mb-3" type="Email" label="Email address"/>
+        <TextInput v-model="loginObject.password" idProp="passwordField" :errorMessage="errorObject.passwordError" class="mb-3" type="password" label="Password"/>
+        <button id="submitButton" type="button" @click="attemptLogin()" class="btn btn-primary">Login</button>
     </form>
 </template>
 <script>

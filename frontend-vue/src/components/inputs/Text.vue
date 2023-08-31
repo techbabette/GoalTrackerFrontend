@@ -14,7 +14,7 @@ export default {
     },
     data(){
         return {
-            id : Math.floor(Math.random() * 1000) + this.name,
+            id : this.getId(),
             localValue : ""
         }
     },
@@ -41,11 +41,22 @@ export default {
         },
         errorMessage : {
             Type : String
+        },
+        idProp : {
+            Type : Number
         }
     },
     computed : {
         ShowHint(){
             return this.hint && !this.errorMessage;
+        }
+    },
+    methods:{
+        getId(){
+            if(this.idProp){
+                return this.idProp;
+            }
+            return Math.floor(Math.random() * 1000) + this.name
         }
     },
     watch: {
