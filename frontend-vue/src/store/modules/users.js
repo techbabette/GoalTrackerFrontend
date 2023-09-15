@@ -45,13 +45,9 @@ export default {
                 return {message: "Server error", success: false};
             }
         },
-        async getUserInformation(state, token){
+        async getUserInformation(){
             try{
-                let result = await axios.get(`users/returning`,{
-                    headers : {
-                        "bearer" : token
-                    }
-                });
+                let result = await axios.get(`users/returning`)
                 return result.data;
             }
             catch(e){
@@ -61,6 +57,11 @@ export default {
                 return {message: "Server error", success: false};
             }
         },
+        // async getUserGoals(state){
+        //     try{
+        //         let result = await 
+        //     }
+        // },
         async attemptLogin(state, loginInformation){
             try{
                 let result = await axios.post("/users/login", loginInformation);

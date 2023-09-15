@@ -5,6 +5,11 @@
 </template>
 <script>
 export default{
-    name: "GoalsPage"
+    name: "GoalsPage",
+    // async mounted(){
+    //     let result = await this.$store.dispatch("getUserGoals");
+
+    //     this.$store.commit("addMessageToList", {text:result.message, success:result.success});
+    // }
 }
 </script>
