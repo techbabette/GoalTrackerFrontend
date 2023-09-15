@@ -6,10 +6,14 @@
 <script>
 export default{
     name: "GoalsPage",
-    // async mounted(){
-    //     let result = await this.$store.dispatch("getUserGoals");
+    async mounted(){
+        let result = await this.$store.dispatch("getUserGoals");
 
-    //     this.$store.commit("addMessageToList", {text:result.message, success:result.success});
-    // }
+        this.$store.commit("addMessageToList", {text:result.message, success:result.success});
+
+        console.log(result);
+
+        this.$store.dispatch("setLocalGoals", result.data);
+    }
 }
 </script>

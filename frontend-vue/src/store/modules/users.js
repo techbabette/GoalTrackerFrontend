@@ -57,11 +57,6 @@ export default {
                 return {message: "Server error", success: false};
             }
         },
-        // async getUserGoals(state){
-        //     try{
-        //         let result = await 
-        //     }
-        // },
         async attemptLogin(state, loginInformation){
             try{
                 let result = await axios.post("/users/login", loginInformation);
