@@ -27,6 +27,8 @@ export default {
         }
     },
     getters: {
-
+        goals(state){
+            return state.goals;
+        }
     },
 }

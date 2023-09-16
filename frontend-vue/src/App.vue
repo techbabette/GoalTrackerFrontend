@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar id="NavComponent"/>
     <MessageDisplay/>
-    <router-view class="p-3"></router-view>
+    <router-view class="p-3 pageDisplay"></router-view>
   </div>
 </template>
 
@@ -40,6 +40,9 @@ export default {
 #app {
   display: flex;
   flex-direction: column;
+}
+.pageDisplay{
+  flex-grow: 1;
 }
 .active{
   color: white !important;
